@@ -1,0 +1,612 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+button, input, select, textarea {
+  border: 0;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 2rem 1rem;
+  font-family: "Ubuntu", sans-serif;
+  transition: all 0.25s linear;
+}
+header #menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  width: 90%;
+  margin: auto;
+  position: absolute;
+  inset: 100% 0 auto 0;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.25s linear;
+  font-size: 1.3rem;
+  height: 0;
+  padding: 0;
+}
+header #menu > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+header #menu > ul > li span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+header #menu > ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  text-align: center;
+  transition: all 0.25s linear;
+}
+header #menu > ul li picture {
+  opacity: 0.7;
+  transition: all 0.25s linear;
+}
+header #menu > ul li ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: unset;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  background-color: hsl(240, 2%, 79%);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  height: 0;
+  color: hsl(207, 13%, 34%);
+  transition: all 0.25s linear;
+  width: 100%;
+}
+header #menu > ul li.active {
+  color: hsl(207, 13%, 34%);
+}
+header #menu > ul li.active picture {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+header #menu > ul li.active ul {
+  padding: 1rem 0;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+header #menu hr {
+  width: 100%;
+  border: 1px solid hsl(240, 2%, 79%);
+}
+header #menu.active {
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 2rem 1rem;
+}
+header #menu #actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+header #menu #actions .action {
+  padding: 0.8rem 2.5rem;
+  border-radius: 5rem;
+  font-family: "Overpass", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.25s linear;
+  cursor: pointer;
+}
+header #menu #actions .action:not(:first-child) {
+  background: linear-gradient(90deg, hsl(13, 100%, 72%) 10%, hsl(353, 100%, 62%) 80%);
+  color: hsl(0, 0%, 100%);
+}
+header #menu #actions .action:hover {
+  background: hsl(355, 100%, 74%);
+  color: hsl(0, 0%, 100%);
+}
+header #handleMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+header #handleMenu .hamburguer_bar {
+  width: 100%;
+  height: 3px;
+  border-radius: 0.5rem;
+  background-color: hsl(0, 0%, 100%);
+  position: relative;
+  transition: all 0.25s linear;
+}
+header #handleMenu .hamburguer_bar::before, header #handleMenu .hamburguer_bar::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: inherit;
+  height: inherit;
+  background-color: inherit;
+  transition: inherit;
+  border-radius: inherit;
+}
+header #handleMenu .hamburguer_bar::before {
+  bottom: 10px;
+}
+header #handleMenu .hamburguer_bar::after {
+  top: 10px;
+}
+header #handleMenu.active .hamburguer_bar {
+  transform: rotate(45deg);
+}
+header #handleMenu.active .hamburguer_bar::before {
+  transform: rotate(90deg);
+  bottom: 0;
+}
+header #handleMenu.active .hamburguer_bar::after {
+  transform: rotate(90deg);
+  top: 0;
+}
+header.scrolling {
+  background-color: hsl(356, 100%, 66%);
+  padding: 1rem 1rem;
+}
+@media (min-width: 1065px) {
+  header {
+    padding: 3rem 10rem;
+  }
+  header #handleMenu {
+    display: none;
+  }
+  header hr {
+    display: none;
+  }
+  header #menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    width: 100%;
+    position: unset;
+    color: hsl(0, 0%, 100%);
+    height: unset;
+    background-color: unset;
+    overflow: unset;
+    font-size: 1rem;
+  }
+  header #menu > ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: unset;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    width: unset;
+    flex: 1 0 auto;
+  }
+  header #menu > ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: unset;
+    gap: 0.2rem;
+    flex-wrap: nowrap;
+    position: relative;
+    width: unset;
+    cursor: pointer;
+  }
+  header #menu > ul li span {
+    position: relative;
+  }
+  header #menu > ul li span::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    border-radius: 0.5rem;
+    background-color: hsl(0, 0%, 100%);
+    bottom: 0;
+    left: 0;
+    transition: all 0.25s linear;
+  }
+  header #menu > ul li picture {
+    opacity: 0.7;
+    transition: all 0.25s linear;
+  }
+  header #menu > ul li ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: unset;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 8rem;
+    background-color: hsl(0, 0%, 100%);
+    padding: 0;
+  }
+  header #menu > ul li ul li:hover {
+    color: #000;
+    transform: scale(1.04);
+  }
+  header #menu > ul li:hover {
+    color: inherit;
+  }
+  header #menu > ul li:hover span::before {
+    width: 100%;
+  }
+  header #menu > ul li:hover picture {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+  header #menu > ul li:hover ul {
+    padding: 1rem 0;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  header #menu #actions {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-end;
+    width: unset;
+    white-space: nowrap;
+  }
+  header #menu #actions .action {
+    color: hsl(0, 0%, 100%);
+  }
+  header #menu #actions .action:not(:first-child) {
+    background: hsl(0, 0%, 100%);
+    color: hsl(355, 100%, 74%);
+  }
+  header #menu #actions .action:hover {
+    background: hsl(355, 100%, 74%);
+    color: hsl(0, 0%, 100%);
+  }
+  header.scrolling {
+    background-color: hsl(356, 100%, 66%);
+    padding: 1.5rem 10rem;
+  }
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+.logo img {
+  min-width: 100px;
+}
+
+#banner {
+  min-height: 80vh;
+  display: grid;
+  place-content: center;
+  background: url(../../../images/bg-pattern-intro-mobile.svg), linear-gradient(90deg, hsl(13, 100%, 72%) 10%, hsl(353, 100%, 62%) 80%);
+  background-repeat: no-repeat;
+  background-position: 35% 60%;
+  border-radius: 0 0 0 5rem;
+  background-attachment: fixed;
+  font-family: "Overpass", sans-serif;
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  gap: 2.5rem;
+}
+#banner .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  padding: 0 1.5rem;
+}
+#banner .title h1 {
+  font-size: 2.5rem;
+}
+#banner .title p {
+  font-weight: 200;
+  font-size: 1.3rem;
+}
+#banner .cta_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 1rem;
+}
+#banner .cta_container .cta {
+  padding: 1rem 0.5rem;
+  width: 150px;
+  border-radius: 5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.25s linear;
+  cursor: pointer;
+}
+#banner .cta_container .cta:first-child {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(356, 100%, 66%);
+}
+#banner .cta_container .cta:first-child:hover {
+  background-color: hsl(355, 100%, 74%);
+  color: hsl(0, 0%, 100%);
+}
+#banner .cta_container .cta:not(:first-child) {
+  border: 1px solid hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 100%);
+}
+#banner .cta_container .cta:not(:first-child):hover {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(356, 100%, 66%);
+}
+@media (min-width: 1065px) {
+  #banner {
+    min-height: 70vh;
+    background: url(../../../images/bg-pattern-intro-desktop.svg), linear-gradient(90deg, hsl(13, 100%, 72%) 10%, hsl(353, 100%, 62%) 80%);
+    background-position: 25% 60%;
+    background-attachment: fixed;
+  }
+  #banner .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    padding: 0 1.5rem;
+  }
+  #banner .title h1 {
+    font-size: 4rem;
+  }
+  #banner .title p {
+    font-size: 1.4rem;
+  }
+}
+
+main {
+  width: 100%;
+  font-family: "Overpass", sans-serif;
+  color: hsl(208, 49%, 24%);
+}
+main section {
+  padding-top: 4rem;
+}
+main .title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+main #introduction {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 3rem;
+  flex-wrap: nowrap;
+}
+main #introduction .container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: unset;
+  justify-content: unset;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+main #introduction .container .content .paragraph {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 2.5rem;
+}
+main #introduction .container .content .paragraph h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+main #introduction .container .content .paragraph p {
+  line-height: 2rem;
+}
+main #introduction .container .illustration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+main #design {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: unset;
+  justify-content: flex-end;
+  gap: 0;
+  flex-wrap: nowrap;
+  position: relative;
+}
+main #design::after {
+  content: "";
+  position: absolute;
+  border-radius: 0 5rem;
+  background: url(../images/bg-pattern-circles.svg), linear-gradient(45deg, hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+  background-position: center 120%;
+  background-repeat: no-repeat;
+  height: 80%;
+  width: 100%;
+  bottom: 0;
+  z-index: -1;
+}
+main #design .container {
+  height: 100%;
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  padding-bottom: 2rem;
+}
+main #design .container .title {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+main #design .container .content {
+  padding: 1rem 2.5rem;
+}
+main #design .container .content p {
+  line-height: 2rem;
+}
+main #power .container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: unset;
+  justify-content: unset;
+  gap: 3rem;
+  flex-wrap: nowrap;
+}
+main #power .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  padding: 1rem 2.5rem;
+}
+main #power .container .content .paragraph {
+  text-align: center;
+}
+main #power .container .content .paragraph h3 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+main #power .container .content .paragraph p {
+  line-height: 2rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  background: hsl(240, 10%, 16%);
+  border-radius: 0 5rem 0 0;
+  padding: 3rem 0.5rem 0 0.5rem;
+  color: hsl(240, 2%, 79%);
+  font-family: "Overpass", sans-serif;
+  margin-top: 5rem;
+}
+footer .mapOfSite {
+  text-align: center;
+}
+footer .mapOfSite nav > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 2.5rem;
+  flex-wrap: nowrap;
+}
+footer .mapOfSite nav > ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+}
+footer .mapOfSite nav > ul li span {
+  color: hsl(0, 0%, 100%);
+  font-size: 1.2rem;
+}
+footer .mapOfSite nav > ul li ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 0.8rem;
+  flex-wrap: nowrap;
+}
+
+.attribution {
+  padding: 1rem 0.5rem;
+  line-height: 2rem;
+  text-align: center;
+}
+.attribution a {
+  padding: 0.2rem 0.4rem;
+  z-index: 1;
+}
+.attribution a:first-child {
+  color: hsl(356, 100%, 66%);
+}
+.attribution a:not(:first-child) {
+  color: hsl(356, 100%, 66%);
+}/*# sourceMappingURL=main.css.map */

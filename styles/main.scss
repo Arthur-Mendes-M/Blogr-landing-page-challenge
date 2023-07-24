@@ -1,0 +1,266 @@
+@import './patterns/resets';
+@import './components/menu/styles';
+
+.logo {
+    @include flexbox($j: center);
+    img {
+        min-width: 100px;
+    }
+}
+
+#banner {
+    min-height: 80vh;
+    display: grid;
+    place-content: center;
+    background: url(../../../images/bg-pattern-intro-mobile.svg), $gradient-intro-cta;
+    background-repeat: no-repeat;
+    background-position: 35% 60%;
+    border-radius: 0 0 0 5rem;
+    background-attachment: fixed;
+    font-family: $font-family-overpass;
+    color: $white;
+    text-align: center;
+    gap: 2.5rem;
+
+    .title {
+        @include flexbox($fd: column, $g: 1rem);
+        padding: 0 1.5rem;
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-weight: 200;
+            font-size: 1.3rem;
+        }
+    }
+
+    .cta_container {
+        @include flexbox($j: center, $g: 1rem, $fw: wrap);
+        width: 100%;
+        padding: 0 1rem;
+
+        .cta {
+            padding: 1rem .5rem;
+            width: 150px;
+            border-radius: 5rem;
+            font-weight: 700;
+            font-size: .9rem;
+            transition: $linear;
+            cursor: pointer;
+
+            &:first-child {
+                background-color: $white;
+                color: $light-red;
+
+                &:hover {
+                    background-color: $very-light-red;
+                    color: $white;
+                }
+            }
+
+            &:not(:first-child) {
+                border: 1px solid $white;
+                color: $white;
+
+                &:hover {
+                    background-color: $white;
+                    color: $light-red;
+                }
+            }
+        }
+    }
+
+    @media(min-width: 1065px) {
+        min-height: 70vh;
+        background: url(../../../images/bg-pattern-intro-desktop.svg), $gradient-intro-cta;       
+        background-position: 25% 60%;
+        background-attachment: fixed;
+
+        .title {
+            @include flexbox($fd: column, $g: 1rem);
+            padding: 0 1.5rem;
+    
+            h1 {
+                font-size: 4rem;
+            }
+    
+            p {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+
+main {
+    width: 100%;
+    font-family: $font-family-overpass;
+    color: $very-dark-blue;
+
+    section {
+        padding-top: 4rem;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 100;
+    }
+
+    #introduction {
+        @include flexbox($fd: column, $a: unset, $g: 3rem);
+
+        .container {
+            @include flexbox($fd: column-reverse, $a: unset, $g: 2rem); 
+            width: 100%;
+
+            .content {
+                .paragraph {
+                    width: 100%;
+                    text-align: center;
+                    padding: 1rem 2.5rem;
+
+                    h3 {
+                        font-size: 2rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    p {
+                        line-height: 2rem;
+                    }
+                }
+            }
+
+            .illustration {
+                @include flexbox($j: center);
+                width: 100%;
+            }
+        }
+    }
+
+    #design {
+        @include flexbox($fd: column-reverse, $a: unset, $j: flex-end); 
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            border-radius: 0 5rem;
+            background: url(../images/bg-pattern-circles.svg), $gradient-body;
+            background-position: center 120%;
+            background-repeat: no-repeat;
+            height: 80%;
+            width: 100%;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .container {
+            height: 100%;
+            color: $white;
+            text-align: center;
+            padding-bottom: 2rem;
+
+            .title {
+                font-size: 1.7rem;
+                margin-bottom: 1rem;
+            }
+
+            .content {
+                padding: 1rem 2.5rem;
+
+                p {
+                    line-height: 2rem;
+                }
+            }
+        }
+    }
+
+    #power {
+        .container {
+            @include flexbox($fd: column-reverse, $a: unset, $g: 3rem);
+
+            .content {
+                @include flexbox($fd: column, $a: unset, $g: 2rem);
+                padding: 1rem 2.5rem;
+
+                .paragraph {
+                    text-align: center;
+
+                    h3 {
+                        font-size: 1.7rem;
+                        margin-bottom: 1rem;
+                    }
+
+                    p {
+                        line-height: 2rem;
+                    }
+                }
+
+                // 
+    
+                // .content {
+                //     padding: 1rem 2.5rem;
+    
+                //     p {
+                //         line-height: 2rem;
+                //     }
+                // }
+            }
+        }
+    }
+}
+
+footer {
+    @include flexbox($fd: column, $g: 2rem);
+    background: $very-dark-black-blue;
+    border-radius: 0 5rem 0 0;
+    padding: 3rem .5rem 0 .5rem;
+    color: $grayish-blue;
+    font-family: $font-family-overpass;
+    margin-top: 5rem;
+
+    .mapOfSite {
+        text-align: center;
+
+        nav {
+            > ul {
+                @include flexbox($fd: column, $g: 2.5rem);
+
+                li {
+                    @include flexbox($fd: column, $g: 1.5rem);
+
+                    span {
+                        color: $white;
+                        font-size: 1.2rem;
+                    }
+
+                    ul {
+                        @include flexbox($fd: column, $g: .8rem);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.attribution {
+    padding: 1rem .5rem;
+    line-height: 2rem;
+    text-align: center;
+
+    a {
+        padding: .2rem .4rem;
+        z-index: 1;
+
+        &:first-child {
+            color: $light-red;
+        }
+
+        &:not(:first-child) {
+            color: $light-red;
+        }
+    }
+}

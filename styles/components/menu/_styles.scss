@@ -1,0 +1,291 @@
+@import '../../patterns/variables';
+
+header {
+    @include flexbox($j: space-between, $g: 1.5rem);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 2rem 1rem;
+    font-family: $font-family-ubuntu;
+    transition: $linear;
+
+    #menu {
+        @include flexbox($fd: column, $g: 1rem);
+        width: 90%;
+        margin: auto;
+        position: absolute;
+        inset: 100% 0 auto 0;
+        background-color: $white;
+        border-radius: .5rem;
+        overflow: hidden;
+        transition: $linear;
+        font-size: 1.3rem;
+        
+        height: 0;
+        padding: 0;
+
+        > ul {
+            @include flexbox($fd: column, $g: 1rem);
+            width: 100%;
+
+            > li span {
+                @include flexbox($g: .5rem);
+            }
+
+            li {
+                @include flexbox($fd: column, $a: center, $g: 1rem);
+
+                padding: .5rem 1rem;
+                width: 100%;
+                text-align: center;
+                transition: $linear;
+
+                picture {
+                    opacity: .7;
+                    transition: $linear;
+                }
+
+                ul {
+                    @include flexbox($fd: column, $a: flex-start, $g: .5rem);
+                    background-color: $grayish-blue;
+                    border-radius: .5rem;
+
+                    overflow: hidden;
+                    height: 0;
+                    color: $very-dark-grayish-blue;
+                    transition: $linear;
+                    width: 100%;
+                }
+
+                &.active {
+                    color: $very-dark-grayish-blue;
+
+                    picture {
+                        opacity: 1;
+                        transform: rotate(180deg);
+                    }
+
+                    ul {
+                        padding: 1rem 0;
+                        height: fit-content;
+                    }
+                }
+            }
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid $grayish-blue;
+        }
+
+        &.active {
+            height: fit-content;
+            padding: 2rem 1rem;
+        }
+
+        #actions {
+            @include flexbox($fd: column, $g: .5rem);
+            width: 100%;
+
+            .action {
+                padding: .8rem 2.5rem;
+                border-radius: 5rem;
+                font-family: $font-family-overpass;
+                font-weight: 700;
+                font-size: 1rem;
+                transition: $linear;
+                cursor: pointer;
+
+                &:not(:first-child) {
+                    background: $gradient-intro-cta;
+                    color: $white;
+                }
+
+                &:hover {
+                    background: $very-light-red;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    #handleMenu {
+        @include flexbox();
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        
+        .hamburguer_bar {
+            width: 100%;
+            height: 3px;
+            border-radius: .5rem;
+            background-color: $white;
+            position: relative;
+            transition: $linear;
+
+            &::before, &::after {
+                position: absolute;
+                content: '';
+                left: 0;
+                width: inherit;
+                height: inherit;
+                background-color: inherit;
+                transition: inherit;
+                border-radius: inherit;
+            }
+
+            &::before {
+                bottom: 10px;
+            }
+
+            &::after {
+                top: 10px;
+            }
+        }
+
+        &.active {
+            .hamburguer_bar {
+                transform: rotate(45deg);
+
+                &::before {
+                    transform: rotate(90deg);
+                    bottom: 0;
+                }
+
+                &::after {
+                    transform: rotate(90deg);
+                    top: 0;
+                }
+            }
+        }
+    }
+
+    &.scrolling {
+        background-color: $light-red;
+        padding: 1rem 1rem;
+    }
+
+    @media(min-width: 1065px) {
+        padding: 3rem 10rem;
+
+        #handleMenu {
+            display: none;
+        }
+
+        hr {
+            display: none;
+        }
+
+        #menu {
+            @include flexbox($j: space-between, $g: 1rem);
+            width: 100%;
+            position: unset;
+            color: $white;
+            height: unset;
+            background-color: unset;
+            overflow: unset;
+            font-size: 1rem;
+
+            > ul {
+                @include flexbox($g: 1rem);
+                width: unset;
+                flex: 1 0 auto;
+
+                li {
+                    @include flexbox($g: .2rem);
+                    position: relative;
+                    width: unset;
+                    cursor: pointer;
+
+                    span {
+                        position: relative;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            width: 0;
+                            height: 1px;
+                            border-radius: .5rem;
+                            background-color: $white;
+                            bottom: 0;
+                            left: 0;
+                            transition: $linear;
+                        }
+                    }
+
+                    picture {
+                        opacity: .7;
+                        transition: $linear;
+                    }
+
+                    ul {
+                        @include flexbox($fd: column, $a: flex-start, $g: .5rem);
+                        position: absolute;
+                        left: 0;
+                        top: 100%;
+                        min-width: 8rem;
+                        background-color: $white;
+
+                        padding: 0;
+
+                        li {
+                            &:hover {
+                                color: #000;
+                                transform: scale(1.04);
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        color: inherit;
+
+                        span {
+                            &::before {
+                                width: 100%;
+                            }
+                        }
+                        
+                        picture {
+                            opacity: 1;
+                            transform: rotate(180deg);
+                        }
+
+                        ul {
+                            padding: 1rem 0;
+                            height: fit-content;
+                        }
+                    }
+                }
+            }
+
+            #actions {
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: flex-end;
+                width: unset;
+                white-space: nowrap;
+    
+                .action {
+                    color: $white;
+    
+                    &:not(:first-child) {
+                        background: $white;
+                        color: $very-light-red;
+                    }
+    
+                    &:hover {
+                        background: $very-light-red;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        &.scrolling {
+            background-color: $light-red;
+            padding: 1.5rem 10rem;
+        }
+    }
+}

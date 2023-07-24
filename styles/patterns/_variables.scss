@@ -1,0 +1,34 @@
+// Colors 
+$light-red: hsl(356, 100%, 66%);
+$very-light-red: hsl(355, 100%, 74%);
+$very-dark-blue: hsl(208, 49%, 24%);
+
+$white: hsl(0, 0%, 100%);
+$grayish-blue: hsl(240, 2%, 79%);
+$very-dark-grayish-blue: hsl(207, 13%, 34%);
+$very-dark-black-blue: hsl(240, 10%, 16%);
+
+$gradient-intro-cta: linear-gradient(90deg, hsl(13, 100%, 72%) 10%, hsl(353, 100%, 62%) 80%);
+$gradient-body: linear-gradient(45deg, hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+
+// Typography
+$font-size: 16px;
+
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap');
+$font-family-overpass: 'Overpass', sans-serif;
+$font-family-ubuntu: 'Ubuntu', sans-serif;
+
+// Transitions
+
+$linear: all .25s linear;
+
+// Mixins
+
+@mixin flexbox($fd: row, $a: center, $j: unset, $g: 0, $fw: nowrap) {
+    display: flex;
+    flex-direction: $fd;
+    align-items: $a;
+    justify-content: $j;
+    gap: $g;
+    flex-wrap: $fw;
+}
