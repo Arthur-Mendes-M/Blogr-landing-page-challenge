@@ -198,16 +198,11 @@ main {
                         line-height: 2rem;
                     }
                 }
+            }
 
-                // 
-    
-                // .content {
-                //     padding: 1rem 2.5rem;
-    
-                //     p {
-                //         line-height: 2rem;
-                //     }
-                // }
+            .illustration {
+                @include flexbox($j: center);
+                width: 100%;
             }
         }
     }
