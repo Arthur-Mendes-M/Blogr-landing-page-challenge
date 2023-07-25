@@ -178,59 +178,65 @@
         </div>
 
         <div class="illustration">
-          <img src="images/illustration-editor-mobile.svg" alt="Desktop illustration">
+          <picture>
+            <source media="(max-width: 1065px)" srcset="./images/illustration-laptop-mobile.svg">
+            <source media="(min-width: 1066px)" srcset="./images/illustration-laptop-desktop.svg">
+            <img src="./images/illustration-laptop-mobile.svg" alt="Laptop illustration">
+          </picture>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="logo">
-      <img src="./images/logo.svg" alt="Blogr">
-    </div>
+    <div class="content">
+      <div class="logo">
+        <img src="./images/logo.svg" alt="Blogr">
+      </div>
 
-    <div class="mapOfSite">
-      <nav>
-        <ul>
-          <li>
-            <span>Product</span>
-            
-            <ul>
-              <li>Overview</li>
-              <li>Pricing</li>
-              <li>Marketplace</li>
-              <li>Features</li>
-              <li>Integrations</li>
-            </ul>
-          </li>
-  
-          <li>
-            <span>Company</span>
-  
-            <ul>
-              <li>About</li>
-              <li>Team</li>
-              <li>Blog</li>
-              <li>Careers</li>
-            </ul>
-          </li>
-  
-          <li>
-            <span>Connect</span>
-  
-            <ul>
-              <li>Contact</li>
-              <li>Newsletter</li>
-              <li>LinkedIn</li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      <div class="mapOfSite">
+        <nav>
+          <ul>
+            <li>
+              <span>Product</span>
+              
+              <ul>
+                <li>Overview</li>
+                <li>Pricing</li>
+                <li>Marketplace</li>
+                <li>Features</li>
+                <li>Integrations</li>
+              </ul>
+            </li>
+    
+            <li>
+              <span>Company</span>
+    
+              <ul>
+                <li>About</li>
+                <li>Team</li>
+                <li>Blog</li>
+                <li>Careers</li>
+              </ul>
+            </li>
+    
+            <li>
+              <span>Connect</span>
+    
+              <ul>
+                <li>Contact</li>
+                <li>Newsletter</li>
+                <li>LinkedIn</li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
     <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="https://github.com/Arthur-Mendes-M" target="_blank">Arthur Mendes</a>.
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/Arthur-Mendes-M" target="_blank">Arthur Mendes.</a>
     </div>
   </footer>
 </body>

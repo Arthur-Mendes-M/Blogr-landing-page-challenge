@@ -109,6 +109,11 @@ main {
         font-weight: 100;
     }
 
+    .illustration {
+        @include flexbox($j: center);
+        width: 100%;
+    }
+
     #introduction {
         @include flexbox($fd: column, $a: unset, $g: 3rem);
 
@@ -132,11 +137,6 @@ main {
                     }
                 }
             }
-
-            .illustration {
-                @include flexbox($j: center);
-                width: 100%;
-            }
         }
     }
 
@@ -144,7 +144,7 @@ main {
         @include flexbox($fd: column-reverse, $a: unset, $j: flex-end); 
         position: relative;
 
-        &::after {
+        &::before {
             content: '';
             position: absolute;
             border-radius: 0 5rem;
@@ -201,8 +201,126 @@ main {
             }
 
             .illustration {
-                @include flexbox($j: center);
+                overflow-x: clip;
+
+                img {
+                    transform: scale(1.4);
+                }
+            }
+        }
+    }
+
+    @media(min-width: 1065px) {
+        padding-top: 5rem;
+
+        section {
+            overflow: hidden;
+            padding-top: 0;
+        }
+
+        #introduction {
+            gap: 0;
+
+            .title {
+                transform: translateY(5rem);
+            }
+
+            .container {
+                flex-direction: row;
+                padding-left: 10rem;
+
+                .content {
+                    @include flexbox($fd: column, $a: unset, $j: center);
+
+                    .paragraph {
+                        padding: 1rem 0;
+                        text-align: unset;
+                        
+                        h3 {
+                            font-size: 1.5rem;
+                        }
+
+                        p {
+                            font-size: 1rem;
+                            line-height: 1.5rem;
+                            max-width: 800px;
+                        }
+                    }
+                }
+
+                .illustration {
+                    transform: translateX(30%);
+                }
+            }
+        }
+
+        #design {
+            flex-direction: row-reverse;
+            align-items: center;
+
+            &::before {
+                height: 70%;
+                top: 0;
+                margin: auto 0;
+                background-position: -50% 80%;
+            }
+
+            .container {
+                @include flexbox($fd: column, $a: unset);
+                text-align: unset;
+                padding: 0;
                 width: 100%;
+
+                .title {
+                    width: fit-content;
+                }
+
+                .content {
+                    padding: 1rem 0;
+                    width: 70%;
+
+                    // p {
+                    //     max-width: 600px;
+                    // }
+                }
+            }
+        }
+
+        #power {
+            .container {
+                flex-direction: row-reverse;
+
+                .content {
+                    @include flexbox($fd: column, $a: unset, $j: center, $g: 2rem);
+                    flex: 1 0 auto;
+                    transform: translateX(10%);
+
+                    .paragraph {
+                        padding: 1rem 0;
+                        text-align: unset;
+                        max-width: 60%;
+                        
+                        h3 {
+                            font-size: 1.5rem;
+                        }
+
+                        p {
+                            font-size: 1rem;
+                            line-height: 2rem;
+                            max-width: 800px;
+                        }
+                    }
+                }
+
+                .illustration {
+                    transform: translateX(10%);
+                    flex: 1 0 auto;
+                    justify-content: flex-end;
+
+                    img {
+                        transform: unset;
+                    }
+                }
             }
         }
     }
@@ -217,23 +335,86 @@ footer {
     font-family: $font-family-overpass;
     margin-top: 5rem;
 
-    .mapOfSite {
-        text-align: center;
+    .content {
+        @include flexbox($fd: column, $g: 2rem);
 
-        nav {
-            > ul {
-                @include flexbox($fd: column, $g: 2.5rem);
+        .mapOfSite {
+            text-align: center;
+    
+            nav {
+                > ul {
+                    @include flexbox($fd: column, $g: 2.5rem);
+    
+                    li {
+                        @include flexbox($fd: column, $g: 1.5rem);
+    
+                        span {
+                            color: $white;
+                            font-size: 1.2rem;
+                        }
+    
+                        ul {
+                            @include flexbox($fd: column, $g: .8rem);
 
-                li {
-                    @include flexbox($fd: column, $g: 1.5rem);
+                            li {
+                                cursor: pointer;
+                                position: relative;
+                                
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    height: 1px;
+                                    width: 0;
+                                    background-color: $white;
+                                    bottom: 0;
+                                    left: 0;
+                                    transition: $linear;
+                                }
 
-                    span {
-                        color: $white;
-                        font-size: 1.2rem;
+                                &:hover {
+                                    &::before {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
                     }
+                }
+            }
+        }
+    }
 
-                    ul {
-                        @include flexbox($fd: column, $g: .8rem);
+    @media(min-width: 1065px) {
+        padding: 5rem .5rem 0 .5rem;
+
+        .content {
+            flex-direction: row;
+            align-items: flex-start;
+            text-align: unset;
+            width: 100%;
+            padding: 0 10rem;
+            gap: 3rem;
+
+            .mapOfSite {
+                flex: 1 0 auto;
+
+                nav {
+                    > ul {
+                        flex-direction: row;
+                        align-items: flex-start;
+                        justify-content: space-evenly;
+
+                        li {
+                            align-items: flex-start;
+
+                            ul {
+                                align-items: flex-start;
+
+                                li {
+                                    align-items: flex-start;
+                                }
+                            }
+                        }
                     }
                 }
             }

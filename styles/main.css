@@ -446,6 +446,15 @@ main .title {
   font-size: 1.3rem;
   font-weight: 100;
 }
+main .illustration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+}
 main #introduction {
   display: flex;
   flex-direction: column;
@@ -475,15 +484,6 @@ main #introduction .container .content .paragraph h3 {
 main #introduction .container .content .paragraph p {
   line-height: 2rem;
 }
-main #introduction .container .illustration {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: nowrap;
-  width: 100%;
-}
 main #design {
   display: flex;
   flex-direction: column-reverse;
@@ -493,7 +493,7 @@ main #design {
   flex-wrap: nowrap;
   position: relative;
 }
-main #design::after {
+main #design::before {
   content: "";
   position: absolute;
   border-radius: 0 5rem;
@@ -549,13 +549,115 @@ main #power .container .content .paragraph p {
   line-height: 2rem;
 }
 main #power .container .illustration {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: nowrap;
-  width: 100%;
+  overflow-x: clip;
+}
+main #power .container .illustration img {
+  transform: scale(1.4);
+}
+@media (min-width: 1065px) {
+  main {
+    padding-top: 5rem;
+  }
+  main section {
+    overflow: hidden;
+    padding-top: 0;
+  }
+  main #introduction {
+    gap: 0;
+  }
+  main #introduction .title {
+    transform: translateY(5rem);
+  }
+  main #introduction .container {
+    flex-direction: row;
+    padding-left: 10rem;
+  }
+  main #introduction .container .content {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+  main #introduction .container .content .paragraph {
+    padding: 1rem 0;
+    text-align: unset;
+  }
+  main #introduction .container .content .paragraph h3 {
+    font-size: 1.5rem;
+  }
+  main #introduction .container .content .paragraph p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    max-width: 800px;
+  }
+  main #introduction .container .illustration {
+    transform: translateX(30%);
+  }
+  main #design {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  main #design::before {
+    height: 70%;
+    top: 0;
+    margin: auto 0;
+    background-position: -50% 80%;
+  }
+  main #design .container {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+    gap: 0;
+    flex-wrap: nowrap;
+    text-align: unset;
+    padding: 0;
+    width: 100%;
+  }
+  main #design .container .title {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  main #design .container .content {
+    padding: 1rem 0;
+    width: 70%;
+  }
+  main #power .container {
+    flex-direction: row-reverse;
+  }
+  main #power .container .content {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    flex: 1 0 auto;
+    transform: translateX(10%);
+  }
+  main #power .container .content .paragraph {
+    padding: 1rem 0;
+    text-align: unset;
+    max-width: 60%;
+  }
+  main #power .container .content .paragraph h3 {
+    font-size: 1.5rem;
+  }
+  main #power .container .content .paragraph p {
+    font-size: 1rem;
+    line-height: 2rem;
+    max-width: 800px;
+  }
+  main #power .container .illustration {
+    transform: translateX(10%);
+    flex: 1 0 auto;
+    justify-content: flex-end;
+  }
+  main #power .container .illustration img {
+    transform: unset;
+  }
 }
 
 footer {
@@ -572,10 +674,18 @@ footer {
   font-family: "Overpass", sans-serif;
   margin-top: 5rem;
 }
-footer .mapOfSite {
+footer .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+footer .content .mapOfSite {
   text-align: center;
 }
-footer .mapOfSite nav > ul {
+footer .content .mapOfSite nav > ul {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -583,7 +693,7 @@ footer .mapOfSite nav > ul {
   gap: 2.5rem;
   flex-wrap: nowrap;
 }
-footer .mapOfSite nav > ul li {
+footer .content .mapOfSite nav > ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -591,17 +701,64 @@ footer .mapOfSite nav > ul li {
   gap: 1.5rem;
   flex-wrap: nowrap;
 }
-footer .mapOfSite nav > ul li span {
+footer .content .mapOfSite nav > ul li span {
   color: hsl(0, 0%, 100%);
   font-size: 1.2rem;
 }
-footer .mapOfSite nav > ul li ul {
+footer .content .mapOfSite nav > ul li ul {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: unset;
   gap: 0.8rem;
   flex-wrap: nowrap;
+}
+footer .content .mapOfSite nav > ul li ul li {
+  cursor: pointer;
+  position: relative;
+}
+footer .content .mapOfSite nav > ul li ul li::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 0;
+  background-color: hsl(0, 0%, 100%);
+  bottom: 0;
+  left: 0;
+  transition: all 0.25s linear;
+}
+footer .content .mapOfSite nav > ul li ul li:hover::before {
+  width: 100%;
+}
+@media (min-width: 1065px) {
+  footer {
+    padding: 5rem 0.5rem 0 0.5rem;
+  }
+  footer .content {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: unset;
+    width: 100%;
+    padding: 0 10rem;
+    gap: 3rem;
+  }
+  footer .content .mapOfSite {
+    flex: 1 0 auto;
+  }
+  footer .content .mapOfSite nav > ul {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+  footer .content .mapOfSite nav > ul li {
+    align-items: flex-start;
+  }
+  footer .content .mapOfSite nav > ul li ul {
+    align-items: flex-start;
+  }
+  footer .content .mapOfSite nav > ul li ul li {
+    align-items: flex-start;
+  }
 }
 
 .attribution {
